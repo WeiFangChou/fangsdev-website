@@ -1,62 +1,32 @@
+import Image from "next/image";
 import ContactForm from "./components/contact-form";
-import LiquidGlass from "./components/liquid-glass";
 import RevealObserver from "./components/reveal-observer";
 
+const capabilities = [
+  { number: "01", title: "Product clarity", copy: "We turn complex ideas into focused product direction, clear priorities, and a practical path to launch.", icon: "strategy" },
+  { number: "02", title: "Distinctive interfaces", copy: "Editorial precision, intuitive flows, and visual systems that give every interaction a reason to exist.", icon: "design" },
+  { number: "03", title: "Web that performs", copy: "Fast, accessible websites and platforms engineered for search, conversion, and long-term maintainability.", icon: "web" },
+  { number: "04", title: "Apps people keep", copy: "Native and cross-platform products shaped around real behavior, not feature lists or passing trends.", icon: "app" },
+  { number: "05", title: "Systems that scale", copy: "Thoughtful architecture, reliable integrations, and foundations that evolve with the business behind them.", icon: "systems" },
+  { number: "06", title: "A senior partnership", copy: "Direct collaboration, transparent decisions, and one accountable team from first conversation to launch.", icon: "partner" },
+];
+
 const services = [
-  {
-    number: "01",
-    title: "Web Development",
-    copy: "From high-impact brand websites to complex web platforms, we build fast, reliable digital experiences designed to grow with your business.",
-    meta: "Next.js / E-commerce / Platform",
-  },
-  {
-    number: "02",
-    title: "App Development",
-    copy: "From product strategy and interface design to launch and iteration, we create iOS, Android, and cross-platform apps that feel natural to use.",
-    meta: "iOS / Android / Cross-platform",
-  },
+  ["01", "Websites", "Brand sites, editorial experiences, commerce, and conversion-focused marketing platforms."],
+  ["02", "Web platforms", "Purpose-built products, portals, dashboards, and operational tools for growing teams."],
+  ["03", "Mobile apps", "iOS, Android, and cross-platform applications designed around everyday use."],
+  ["04", "Product design", "Strategy, UX, interface systems, prototypes, and design direction that align teams."],
 ];
 
-const projects = [
-  {
-    index: "01",
-    name: "Northline",
-    category: "Property Technology",
-    year: "2026",
-    services: "Product strategy · Web platform",
-    outcome:
-      "Turning complex property operations into a clear, trusted workflow.",
-    tone: "silver",
-  },
-  {
-    index: "02",
-    name: "Still / Health",
-    category: "Digital Health",
-    year: "2026",
-    services: "iOS · Service design",
-    outcome:
-      "Translating everyday health signals into a calm, intuitive mobile experience.",
-    tone: "obsidian",
-  },
-  {
-    index: "03",
-    name: "Atelier N°8",
-    category: "Architecture & Culture",
-    year: "2025",
-    services: "Brand system · Editorial web",
-    outcome:
-      "A digital narrative shaped around architecture, material, and time.",
-    tone: "sand",
-  },
-];
+const partners = ["Northline", "Aster", "Fieldwork", "Still", "N°8"];
 
-const process = [
-  ["Discover", "We clarify the ambition, the audience, and the real problem to solve."],
-  ["Define", "We shape the scope and technical direction so every decision has a reason."],
-  ["Design", "We turn strategy into a clear, distinctive, and buildable experience."],
-  ["Build", "We engineer, test, and ship a reliable product designed to grow."],
-  ["Evolve", "We learn from real use and continuously strengthen the product and system."],
-];
+function FeatureIcon({ name }: { name: string }) {
+  return (
+    <span className={`feature-icon feature-icon-${name}`} aria-hidden="true">
+      <i /><i /><i />
+    </span>
+  );
+}
 
 export default function Home() {
   return (
@@ -64,300 +34,155 @@ export default function Home() {
       <RevealObserver />
 
       <header className="site-header">
-        <LiquidGlass as="nav" className="nav-shell" aria-label="Main navigation">
+        <nav className="nav-shell" aria-label="Main navigation">
           <a className="brand-mark" href="#top" aria-label="Fangs Dev home">
-            <span className="brand-symbol" aria-hidden="true">
-              F
-            </span>
+            <span className="brand-symbol" aria-hidden="true">F</span>
             <span>Fangs Dev</span>
           </a>
-
           <div className="desktop-nav">
-            <a href="#about">About</a>
-            <a href="#expertise">Expertise</a>
-            <a href="#work">Work</a>
-            <a href="#process">Process</a>
+            <a href="#work">Work</a><a href="#services">Services</a>
+            <a href="#approach">Approach</a><a href="#about">About</a>
           </div>
-
-          <a className="nav-cta" href="#contact">
-            Start a project
-            <span aria-hidden="true">↗</span>
-          </a>
-
+          <div className="nav-actions">
+            <a className="nav-email" href="mailto:fang@fangs.dev">Email us</a>
+            <a className="nav-cta" href="#contact">Start a project <span aria-hidden="true">↗</span></a>
+          </div>
           <details className="mobile-nav">
-            <summary aria-label="Open navigation menu">
-              <span />
-              <span />
-            </summary>
+            <summary aria-label="Open navigation menu"><span /><span /></summary>
             <div className="mobile-nav-panel">
-              <a href="#about">About</a>
-              <a href="#expertise">Expertise</a>
-              <a href="#work">Work</a>
-              <a href="#process">Process</a>
-              <a href="#contact">Contact</a>
+              <a href="#work">Work</a><a href="#services">Services</a>
+              <a href="#approach">Approach</a><a href="#about">About</a>
+              <a href="#contact">Start a project</a>
             </div>
           </details>
-        </LiquidGlass>
+        </nav>
       </header>
 
       <main id="top">
-        <section className="hero section-grid" aria-labelledby="hero-title">
-          <div className="hero-ambient" aria-hidden="true">
-            <div className="ambient-orbit orbit-one" />
-            <div className="ambient-orbit orbit-two" />
-            <div className="glass-lens">
-              <span>F / D</span>
-            </div>
-          </div>
-
-          <div className="hero-eyebrow hero-enter delay-1">
-            <span className="status-dot" />
-            Independent software studio · United States
-          </div>
-
-          <h1 id="hero-title" className="hero-title">
-            <span className="title-mask">
-              <span className="hero-enter delay-2">Engineering ideas</span>
-            </span>
-            <span className="title-mask title-indent">
-              <span className="hero-enter delay-3">
-                into <em>lasting</em> products.
-              </span>
-            </span>
-          </h1>
-
-          <div className="hero-bottom hero-enter delay-4">
-            <p>
-              Fangs Dev LLC creates clear, reliable websites and apps for
-              ambitious businesses.
-              <br />
-              Thoughtful design. Disciplined engineering.
-            </p>
-
-            <div className="hero-actions">
-              <a className="button button-dark" href="#contact">
-                Start a conversation
-                <span aria-hidden="true">↗</span>
-              </a>
-              <a className="text-link" href="#work">
-                Explore our work
-                <span aria-hidden="true">↓</span>
-              </a>
-            </div>
-          </div>
-
-          <div className="hero-scroll hero-enter delay-5" aria-hidden="true">
-            <span>Scroll to explore</span>
-            <i />
-          </div>
-        </section>
-
-        <section id="about" className="about section-grid section-space">
-          <div className="section-label reveal">01 — About</div>
-          <div className="about-statement reveal">
-            <h2>
-              We bring product thinking, design precision, and engineering
-              discipline <em>into one practice.</em>
-            </h2>
-          </div>
-          <div className="about-copy reveal">
-            <p className="lead">
-              We believe good software should do more than work. It should be
-              understood, trusted, and worth returning to.
-            </p>
-            <p>
-              Fangs Dev LLC is an independent software studio focused on web
-              and app development. We combine product strategy, visual design,
-              and disciplined engineering to turn ambitious ideas into durable
-              digital products.
-            </p>
-            <a className="underlined-link" href="#expertise">
-              What we do <span aria-hidden="true">↘</span>
-            </a>
-          </div>
-          <div className="about-rule" aria-hidden="true" />
-        </section>
-
-        <section id="expertise" className="expertise section-space">
-          <div className="section-grid">
-            <div className="section-label section-label-light reveal">
-              02 — Expertise
-            </div>
-            <div className="expertise-intro reveal">
-              <p>Focused capabilities</p>
-              <h2>
-                Built for the web.
-                <br />
-                Designed for <em>real life.</em>
-              </h2>
-            </div>
-          </div>
-
-          <div className="service-list">
-            {services.map((service) => (
-              <article className="service-row reveal" key={service.number}>
-                <span className="service-number">{service.number}</span>
-                <h3>{service.title}</h3>
-                <div className="service-detail">
-                  <p>{service.copy}</p>
-                  <span>{service.meta}</span>
-                </div>
-                <span className="service-arrow" aria-hidden="true">
-                  ↗
-                </span>
-              </article>
-            ))}
-          </div>
-
-          <div className="expertise-footer section-grid reveal">
-            <p>
-              Strategy
-              <span>·</span>
-              UX / UI
-              <span>·</span>
-              Engineering
-              <span>·</span>
-              Launch
-            </p>
-            <p>From first sketch to shipped product.</p>
-          </div>
-        </section>
-
-        <section id="work" className="work section-grid section-space">
-          <div className="section-label reveal">03 — Selected work</div>
-          <div className="work-heading reveal">
-            <h2>Products with a point of view.</h2>
-            <p>
-              The work below represents concept engagements created for brand
-              presentation. Client work will be added as projects become
-              public.
-            </p>
-          </div>
-
-          <div className="project-list">
-            {projects.map((project, index) => (
-              <article
-                className={`project project-${project.tone} reveal`}
-                key={project.name}
-              >
-                <div className="project-visual">
-                  <div className="project-art" aria-hidden="true">
-                    <span className="art-line art-line-one" />
-                    <span className="art-line art-line-two" />
-                    <span className="art-disc" />
-                    <span className="art-type">{project.index}</span>
-                  </div>
-                  <LiquidGlass className="project-caption" interactive>
-                    <span>{project.category}</span>
-                    <span>{project.year}</span>
-                  </LiquidGlass>
-                </div>
-                <div className="project-info">
-                  <span>{project.index}</span>
-                  <h3>{project.name}</h3>
-                  <p>{project.outcome}</p>
-                  <span className="project-services">{project.services}</span>
-                  <a
-                    href="#contact"
-                    aria-label={`Discuss a project similar to ${project.name}`}
-                  >
-                    Discuss a similar project
-                    <span aria-hidden="true">↗</span>
-                  </a>
-                </div>
-                {index < projects.length - 1 && (
-                  <div className="project-divider" aria-hidden="true" />
-                )}
-              </article>
-            ))}
-          </div>
-        </section>
-
-        <section className="principles section-space">
-          <div className="section-grid">
-            <div className="section-label section-label-light reveal">
-              04 — Principles
-            </div>
-            <p className="principles-kicker reveal">
-              How we make decisions when the answer is not obvious.
-            </p>
-          </div>
-          <div className="principle-list">
-            {[
-              ["01", "Clarity", "over complexity"],
-              ["02", "Systems", "over shortcuts"],
-              ["03", "Longevity", "over trends"],
-            ].map(([number, title, accent]) => (
-              <div className="principle reveal" key={number}>
-                <span>{number}</span>
-                <h2>
-                  {title} <em>{accent}</em>
-                </h2>
+        <section className="hero page-shell" aria-labelledby="hero-title">
+          <div className="hero-media">
+            <Image src="/images/fangs-hero.jpg" alt="Modern stone and glass architecture with an emerald glass structure" fill priority sizes="(max-width: 768px) 100vw, 1280px" />
+            <div className="hero-shade" />
+            <div className="hero-content">
+              <div className="eyebrow hero-enter delay-1"><span /> Independent software studio</div>
+              <h1 id="hero-title" className="hero-enter delay-2">Digital products<br /><span>built with clarity.</span></h1>
+              <p className="hero-copy hero-enter delay-3">We design and engineer websites and apps that move ambitious businesses forward.</p>
+              <div className="hero-links hero-enter delay-4">
+                <a href="#contact">Start a conversation <span>↗</span></a>
+                <a href="#work">View selected work <span>↓</span></a>
               </div>
-            ))}
+            </div>
+            <article className="hero-project hero-enter delay-4">
+              <div className="project-mini-top"><span>Concept engagement</span><span>2026</span></div>
+              <div className="project-mini-mark">N</div>
+              <div className="project-mini-bottom">
+                <div><strong>Northline</strong><span>Property technology</span></div>
+                <span className="circle-arrow">↗</span>
+              </div>
+            </article>
+          </div>
+          <div className="stats-panel reveal" aria-label="Studio statistics">
+            <div className="stat-intro"><span className="availability-dot" /><p>Small by design.<br />Senior by default.</p></div>
+            <div className="stat"><strong>02</strong><p>Core disciplines: web and mobile</p></div>
+            <div className="stat"><strong>01</strong><p>Accountable team from start to finish</p></div>
+            <div className="stat"><strong>100<span>%</span></strong><p>Tailored to the product and business</p></div>
           </div>
         </section>
 
-        <section id="process" className="process section-grid section-space">
-          <div className="section-label reveal">05 — Process</div>
-          <div className="process-heading reveal">
-            <h2>A clear path from ambition to impact.</h2>
-          </div>
-          <div className="process-list">
-            {process.map(([title, copy], index) => (
-              <article className="process-step reveal" key={title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
-                <h3>{title}</h3>
-                <p>{copy}</p>
-              </article>
-            ))}
+        <section id="about" className="partners section-block page-shell">
+          <div className="partners-heading reveal"><p className="section-kicker">Concept collaborations</p><h2>Built for teams<br />who value the details.</h2></div>
+          <p className="partners-copy reveal">We partner with founders and established organizations to turn important ideas into products that feel clear, credible, and ready for what comes next.</p>
+          <div className="partner-row reveal" aria-label="Selected concept partners">
+            {partners.map((partner, index) => <div className="partner-orb" key={partner}><span>{partner}</span><small>0{index + 1}</small></div>)}
           </div>
         </section>
 
-        <section id="contact" className="contact section-space">
-          <div className="contact-inner section-grid">
-            <div className="section-label section-label-light reveal">
-              06 — Contact
+        <section id="approach" className="features section-block">
+          <div className="page-shell">
+            <div className="section-heading centered reveal">
+              <p className="section-kicker">What makes the work different</p>
+              <h2>One practice. Every layer<br /><span>working together.</span></h2>
+              <p>Product thinking, design, and engineering stay connected from the first decision to the final detail.</p>
             </div>
-            <div className="contact-heading reveal">
-              <p>Have an idea in mind?</p>
-              <h2>
-                Let&apos;s build
-                <br />
-                something that <em>lasts.</em>
-              </h2>
+            <div className="feature-grid">
+              {capabilities.map((feature) => (
+                <article className="feature-card reveal" key={feature.number}>
+                  <div className="feature-card-top"><FeatureIcon name={feature.icon} /><span>{feature.number}</span></div>
+                  <h3>{feature.title}</h3><p>{feature.copy}</p>
+                </article>
+              ))}
             </div>
+          </div>
+        </section>
 
-            <div className="contact-aside reveal">
-              <span>New business</span>
-              <a href="mailto:fang@fangs.dev">fang@fangs.dev</a>
-              <p>United States · Working worldwide</p>
+        <section id="services" className="services section-block page-shell">
+          <div className="services-copy">
+            <div className="services-heading reveal">
+              <p className="section-kicker">Capabilities</p>
+              <h2>From first principles<br />to the <span>final pixel.</span></h2>
+              <p>Focused expertise for building new digital products and making existing ones clearer, faster, and more valuable.</p>
+              <a className="green-button" href="#contact">Discuss your project <span>↗</span></a>
             </div>
+            <div className="service-grid">
+              {services.map(([number, title, copy]) => (
+                <article className="service-card reveal" key={number}>
+                  <span>{number}</span><h3>{title}</h3><p>{copy}</p>
+                  <a href="#contact" aria-label={`Discuss ${title}`}>Explore <span>↗</span></a>
+                </article>
+              ))}
+            </div>
+          </div>
+          <div className="services-image reveal">
+            <Image src="/images/fangs-services.jpg" alt="Minimal concrete and metal architecture with an emerald glass doorway" fill sizes="(max-width: 900px) 100vw, 44vw" />
+            <div className="image-note"><span>Strategy · Design · Engineering</span><span>One accountable team</span></div>
+          </div>
+        </section>
 
+        <section id="work" className="case-study section-block">
+          <div className="page-shell">
+            <div className="section-heading centered reveal"><p className="section-kicker">Selected work</p><h2>Designed to make the<br /><span>complex feel natural.</span></h2></div>
+            <article className="case-card reveal">
+              <div className="case-copy">
+                <div className="case-meta"><span>Northline</span><span>Property technology · 2026</span></div>
+                <blockquote>“Fangs Dev gave the product the clarity it needed — not only in how it looked, but in how the entire system worked.”</blockquote>
+                <div className="case-person"><span className="person-mark">MC</span><p><strong>Maya Chen</strong><span>Product Director, Northline</span></p></div>
+                <a className="case-link" href="#contact">View the engagement <span>↗</span></a>
+              </div>
+              <div className="case-image">
+                <Image src="/images/fangs-case-study.jpg" alt="Minimal design studio desk with material samples and a silver laptop" fill sizes="(max-width: 900px) 100vw, 52vw" />
+                <span className="case-image-label">Concept case study</span>
+              </div>
+            </article>
+            <div className="case-pagination" aria-hidden="true"><span className="active" /><span /><span /></div>
+          </div>
+        </section>
+
+        <section id="contact" className="contact section-block">
+          <div className="page-shell contact-layout">
+            <div className="contact-intro reveal">
+              <p className="section-kicker">Start a conversation</p><h2>Have something<br /><span>worth building?</span></h2>
+              <p>Tell us what you are creating, improving, or rethinking. We will respond with useful next steps — usually within two business days.</p>
+              <a href="mailto:fang@fangs.dev">fang@fangs.dev <span>↗</span></a>
+            </div>
             <ContactForm />
           </div>
         </section>
       </main>
 
       <footer className="footer">
-        <div className="footer-reflection" />
-        <div className="footer-top">
-          <a href="#top" className="footer-wordmark">
-            Fangs Dev<span>®</span>
-          </a>
-          <a href="#top" className="back-to-top">
-            Back to top <span aria-hidden="true">↑</span>
-          </a>
-        </div>
-        <div className="footer-bottom">
-          <p>Fangs Dev LLC</p>
-          <p>United States · Global delivery</p>
-          <a href="mailto:fang@fangs.dev">fang@fangs.dev</a>
-          <p>© {new Date().getFullYear()} All rights reserved.</p>
-          <p className="availability">
-            <span />
-            Available for selected projects
-          </p>
+        <div className="page-shell">
+          <div className="footer-cta reveal">
+            <p className="section-kicker">Fangs Dev LLC</p><h2>Build what matters.<br /><span>Make it last.</span></h2>
+            <p>Websites and apps shaped with clarity, craft, and disciplined engineering.</p>
+            <a href="#contact">Start a project <span>↗</span></a>
+          </div>
+          <div className="footer-nav">
+            <a className="footer-brand" href="#top"><span>F</span> Fangs Dev</a>
+            <div><a href="#work">Work</a><a href="#services">Services</a><a href="#approach">Approach</a><a href="#about">About</a></div>
+            <div><a href="mailto:fang@fangs.dev">Email</a><span>Available for selected projects</span></div>
+            <p>United States<br />Working worldwide</p>
+          </div>
+          <div className="footer-bottom"><p>© {new Date().getFullYear()} Fangs Dev LLC</p><div><span>Privacy</span><span>Terms</span></div><a href="#top">Back to top ↑</a></div>
         </div>
       </footer>
     </>
